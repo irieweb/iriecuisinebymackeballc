@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Irie Cuisine By Mackeba | Authentic Jamaican Food Truck | Bunnell, FL</title>
+  <meta name="description" content="Irie Cuisine By Mackeba LLC - Authentic Jamaican food truck in Bunnell, Florida. Jerk chicken, oxtails, curried goat & more. Catering available.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Outfit:wght@300;400;500;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #FED100;
+      --green: #009B3A;
+      --black: #000000;
+      --gold-light: #FFE44D;
+      --gold-dark: #D4A800;
+      --green-light: #00C44A;
+      --green-dark: #006B28;
+      --cream: #FFF8E7;
+      --charcoal: #1a1a1a;
+      --smoke: #2d2d2d;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--black);
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    /* ===== NAV ===== */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 0.8rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.3s ease;
+    }
+    .nav.scrolled {
+      background: rgba(0,0,0,0.97);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 2px 30px rgba(0,0,0,0.5);
+    }
+    .nav-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 900;
+      color: var(--gold);
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 1.5rem;
+      align-items: center;
+    }
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 400;
+      font-size: 0.85rem;
+      transition: color 0.3s;
+      position: relative;
+      letter-spacing: 0.03em;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0;
+      width: 0; height: 2px;
+      background: var(--gold);
+      transition: width 0.3s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-phone {
+      background: var(--gold);
+      color: var(--black) !important;
+      padding: 8px 18px;
+      border-radius: 50px;
+      font-weight: 600 !important;
+      font-size: 0.85rem !important;
+    }
+    .nav-phone::after { display: none !important; }
+    .nav-phone:hover { background: var(--gold-light); color: var(--black) !important; }
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .nav-toggle span {
+      width: 28px; height: 2px;
+      background: var(--gold);
+      transition: all 0.3s;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .hero-backdrop {
+      position: absolute;
+      inset: 0;
+      background-image: url('1000077042.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      z-index: 0;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.55);
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 2rem;
+      animation: fadeInUp 1.2s ease-out;
+    }
+    .hero-logo {
+      width: min(420px, 80vw);
+      border-radius: 16px;
+      box-shadow: 0 0 80px rgba(254,209,0,0.3), 0 0 160px rgba(0,155,58,0.15);
+      margin-bottom: 2rem;
+      animation: logoGlow 4s ease-in-out infinite alternate;
+    }
+    @keyframes logoGlow {
+      0% { box-shadow: 0 0 60px rgba(254,209,0,0.2), 0 0 120px rgba(0,155,58,0.1); }
+      100% { box-shadow: 0 0 100px rgba(254,209,0,0.4), 0 0 200px rgba(0,155,58,0.2); }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hero-tagline {
+      font-family: 'Dancing Script', cursive;
+      font-size: clamp(1.8rem, 5vw, 3.5rem);
+      color: var(--gold);
+      margin-bottom: 1rem;
+      text-shadow: 0 2px 20px rgba(254,209,0,0.4);
+    }
+    .hero-subtitle {
+      font-size: clamp(1rem, 2.5vw, 1.3rem);
+      font-weight: 300;
+      color: rgba(255,255,255,0.85);
+      max-width: 600px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.6;
+    }
+    .hero-cta {
+      display: inline-flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .btn {
+      display: inline-block;
+      padding: 14px 36px;
+      border-radius: 50px;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-gold {
+      background: var(--gold);
+      color: var(--black);
+      box-shadow: 0 4px 25px rgba(254,209,0,0.3);
+    }
+    .btn-gold:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 35px rgba(254,209,0,0.5);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--gold);
+      border: 2px solid var(--gold);
+    }
+    .btn-outline:hover {
+      background: var(--gold);
+      color: var(--black);
+      transform: translateY(-2px);
+    }
+
+    /* ===== SECTIONS ===== */
+    .section-header { text-align: center; margin-bottom: 3.5rem; }
+    .section-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 900;
+      margin-bottom: 0.5rem;
+    }
+    .section-header .accent { color: var(--gold); }
+    .section-header p {
+      font-weight: 300; font-size: 1.1rem;
+      color: rgba(255,255,255,0.7);
+      max-width: 550px; margin: 0 auto;
+    }
+    .divider {
+      width: 80px; height: 4px;
+      background: linear-gradient(90deg, var(--green), var(--gold));
+      border-radius: 2px; margin: 1rem auto;
+    }
+
+    /* ===== MISSION ===== */
+    #mission {
+      background: var(--charcoal);
+      padding: 6rem 2rem;
+    }
+    .mission-content {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .mission-content p {
+      font-weight: 300;
+      line-height: 1.9;
+      color: rgba(255,255,255,0.85);
+      font-size: 1.15rem;
+      margin-bottom: 1.5rem;
+    }
+    .flag-bar {
+      display: flex; height: 6px;
+      border-radius: 3px; overflow: hidden;
+      width: 120px; margin: 2rem auto 0;
+    }
+    .flag-bar span:nth-child(1) { flex: 1; background: var(--green); }
+    .flag-bar span:nth-child(2) { flex: 1; background: var(--gold); }
+    .flag-bar span:nth-child(3) { flex: 1; background: var(--black); border: 1px solid #333; }
+
+    /* ===== MENU ===== */
+    #menu {
+      padding: 6rem 2rem;
+      background: var(--black);
+    }
+    .menu-container { max-width: 900px; margin: 0 auto; }
+    .menu-category { margin-bottom: 2.5rem; }
+    .menu-category-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem; color: var(--green);
+      border-bottom: 2px solid rgba(0,155,58,0.3);
+      padding-bottom: 0.5rem; margin-bottom: 1.2rem;
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .menu-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 0.8rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      transition: all 0.3s;
+    }
+    .menu-item:hover { padding-left: 10px; border-bottom-color: rgba(254,209,0,0.2); }
+    .menu-item-name { font-weight: 600; font-size: 1.05rem; }
+    .menu-item-desc {
+      font-weight: 300; font-size: 0.85rem;
+      color: rgba(255,255,255,0.55); margin-top: 0.2rem;
+    }
+    .menu-item-price {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700; font-size: 1.1rem;
+      color: var(--gold); white-space: nowrap; margin-left: 1.5rem;
+    }
+
+    /* ===== CONTACT ===== */
+    #contact {
+      padding: 6rem 2rem;
+      background: var(--charcoal);
+    }
+    .contact-grid {
+      max-width: 1000px; margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+    }
+    .contact-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(254,209,0,0.1);
+      border-radius: 16px; padding: 2rem;
+      text-align: center;
+      transition: all 0.3s;
+    }
+    .contact-card:hover {
+      border-color: rgba(254,209,0,0.3);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+    }
+    .cc-icon { font-size: 2rem; margin-bottom: 1rem; }
+    .contact-card h3 {
+      font-family: 'Playfair Display', serif;
+      color: var(--gold); margin-bottom: 0.8rem; font-size: 1.2rem;
+    }
+    .contact-card a {
+      color: var(--gold-light);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .contact-card a:hover { color: #fff; text-decoration: underline; }
+    .contact-card p { font-weight: 300; color: rgba(255,255,255,0.8); line-height: 1.6; }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      text-align: center; padding: 2.5rem 2rem;
+      background: var(--black);
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .footer-flag { display: flex; justify-content: center; gap: 0; margin-bottom: 1.5rem; }
+    .footer-flag span { width: 40px; height: 4px; }
+    .footer-flag span:nth-child(1) { background: var(--green); }
+    .footer-flag span:nth-child(2) { background: var(--gold); }
+    .footer-flag span:nth-child(3) { background: var(--black); border: 1px solid #333; }
+    .footer-social {
+      display: flex; gap: 1.5rem; justify-content: center; margin-bottom: 1rem;
+    }
+    .footer-social a {
+      color: rgba(255,255,255,0.6); text-decoration: none;
+      font-size: 0.9rem; transition: color 0.3s;
+    }
+    .footer-social a:hover { color: var(--gold); }
+    .footer p { font-size: 0.8rem; color: rgba(255,255,255,0.35); }
+
+    /* ===== FADE IN ===== */
+    .fade-in { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* ===== MOBILE ===== */
+    @media (max-width: 768px) {
+      .nav-links { 
+        display: none; flex-direction: column;
+        position: absolute; top: 100%; left: 0; right: 0;
+        background: rgba(0,0,0,0.97); padding: 1.5rem 2rem;
+        gap: 1.2rem;
+      }
+      .nav-links.open { display: flex; }
+      .nav-toggle { display: flex; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <a href="#" class="nav-brand">Irie Cuisine</a>
+    <button class="nav-toggle" id="navToggle">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#mission">Mission</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="mailto:iriecuisinebymackeballc@gmail.com">Email</a></li>
+      <li><a href="https://www.iriecuisinebymackeballc.com" target="_blank">Website</a></li>
+      <li><a href="https://www.instagram.com/iriecuisinebymackeballc" target="_blank">Instagram</a></li>
+      <li><a href="tel:3863927021" class="nav-phone">📞 (386) 392-7021</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO with Logo Backdrop -->
+  <section class="hero">
+    <div class="hero-backdrop"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <img src="1000077042.jpg" alt="Irie Cuisine By Mackeba Logo" class="hero-logo">
+      <h1 class="hero-tagline">Island Flare, Soul &amp; Fire</h1>
+      <p class="hero-subtitle">Authentic Jamaican food truck bringing bold flavors and community love to Bunnell, Florida. Every dish made with tradition.</p>
+      <div class="hero-cta">
+        <a href="tel:3863927021" class="btn btn-gold">📞 Order Now</a>
+        <a href="#menu" class="btn btn-outline">View Menu</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MISSION -->
+  <section id="mission">
+    <div class="section-header fade-in">
+      <h2>Our <span class="accent">Mission</span></h2>
+      <div class="divider"></div>
+    </div>
+    <div class="mission-content fade-in">
+      <p>Irie Cuisine By Mackeba brings bold Jamaican flavors and island soul to Bunnell, Florida. From signature jerk chicken smoked over real charcoal to rich oxtails and curried goat — every dish is made with love and tradition.</p>
+      <p>We believe food brings people together. Our mission is to serve authentic, soul-satisfying Jamaican cuisine that connects our community, one plate at a time.</p>
+      <div class="flag-bar">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU -->
+  <section id="menu">
+    <div class="section-header fade-in">
+      <h2>The <span class="accent">Menu</span></h2>
+      <div class="divider"></div>
+      <p>Bold flavors. Real ingredients. Island soul.</p>
+    </div>
+    <div class="menu-container fade-in">
+      <div class="menu-category">
+        <h3 class="menu-category-title"><span class="icon">🔥</span> Signature Plates</h3>
+        <div class="menu-item">
+          <div>
+            <div class="menu-item-name">Jerk Chicken</div>
+            <div class="menu-item-desc">Smoked over real charcoal, our signature flavor</div>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div>
+            <div class="menu-item-name">Oxtails</div>
+            <div class="menu-item-desc">Slow-braised in rich, savory gravy</div>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div>
+            <div class="menu-item-name">Curried Goat</div>
+            <div class="menu-item-desc">Tender, seasoned with authentic island spices</div>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div>
+            <div class="menu-item-name">Escovitch Fish</div>
+            <div class="menu-item-desc">Fried crispy with pickled peppers &amp; onions</div>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div>
+            <div class="menu-item-name">Stew Chicken</div>
+            <div class="menu-item-desc">Classic Jamaican stew, deeply flavored</div>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div>
+            <div class="menu-item-name">Curried Chicken</div>
+            <div class="menu-item-desc">Aromatic curry with tender chicken pieces</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-category">
+        <h3 class="menu-category-title"><span class="icon">🍚</span> Sides &amp; Extras</h3>
+        <div class="menu-item">
+          <div><div class="menu-item-name">Rice &amp; Peas</div></div>
+        </div>
+        <div class="menu-item">
+          <div><div class="menu-item-name">Festival</div></div>
+        </div>
+        <div class="menu-item">
+          <div><div class="menu-item-name">Plantains</div></div>
+        </div>
+        <div class="menu-item">
+          <div><div class="menu-item-name">Cabbage</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-header fade-in">
+      <h2>Find <span class="accent">Our Truck</span></h2>
+      <div class="divider"></div>
+    </div>
+    <div class="contact-grid fade-in">
+      <div class="contact-card">
+        <div class="cc-icon">📍</div>
+        <h3>Location</h3>
+        <p><a href="https://www.google.com/maps/search/?api=1&query=1107+N+S+Street+Bunnell+FL+37110" target="_blank">1107 N S Street<br>Bunnell, FL 37110</a></p>
+        <p style="margin-top:0.5rem; font-size:0.8rem; color:rgba(255,255,255,0.45);">Tap to open in Google Maps</p>
+      </div>
+      <div class="contact-card">
+        <div class="cc-icon">🕐</div>
+        <h3>Hours</h3>
+        <p>Tuesday – Saturday<br>11:00 AM – 7:00 PM</p>
+        <p style="margin-top:0.5rem; color:rgba(255,255,255,0.4); font-size:0.85rem;">Sunday &amp; Monday: Closed</p>
+      </div>
+      <div class="contact-card">
+        <div class="cc-icon">📞</div>
+        <h3>Get In Touch</h3>
+        <p><a href="tel:3863927021">(386) 392-7021</a></p>
+        <p style="margin-top:0.5rem;"><a href="mailto:iriecuisinebymackeballc@gmail.com">Email Us</a></p>
+        <p style="margin-top:0.5rem;"><a href="https://www.instagram.com/iriecuisinebymackeballc" target="_blank">@iriecuisinebymackeballc</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-flag">
+      <span></span><span></span><span></span>
+    </div>
+    <div class="footer-social">
+      <a href="https://www.instagram.com/iriecuisinebymackeballc" target="_blank">Instagram</a>
+      <a href="https://www.iriecuisinebymackeballc.com" target="_blank">Website</a>
+      <a href="tel:3863927021">Call Us</a>
+      <a href="mailto:iriecuisinebymackeballc@gmail.com">Email</a>
+    </div>
+    <p>&copy; 2026 Irie Cuisine By Mackeba LLC &mdash; Jamaican Eats &amp; Community</p>
+  </footer>
+
+  <script>
+    // Navbar scroll effect
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // Mobile toggle
+    const toggle = document.getElementById('navToggle');
+    const links = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => {
+      links.classList.toggle('open');
+    });
+    links.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => links.classList.remove('open'));
+    });
+
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
