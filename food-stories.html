@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Food Stories — Irie Cuisine By Mackeba LLC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold: #DAA520;
+  --gold-bright: #FFD700;
+  --wood-dark: #5C3A1E;
+  --wood-light: #C4A265;
+  --wood-pale: #E8D5B7;
+  --cream: #FFF8E7;
+  --dark: #1a1a1a;
+  --green-ja: #009B3A;
+  --yellow-ja: #FED100;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Crimson Text', Georgia, serif;
+  color: #2a1a0a;
+  background: var(--wood-pale);
+}
+
+/* NAV */
+.nav-bar {
+  background: linear-gradient(180deg, #2a1a0a 0%, #3d2b1a 100%);
+  padding: 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  border-bottom: 3px solid var(--gold);
+}
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+.nav-logo {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: 1.6rem;
+  color: var(--gold-bright);
+  text-decoration: none;
+  padding: 14px 0;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.nav-links {
+  display: flex;
+  gap: 0;
+  list-style: none;
+  align-items: center;
+}
+.nav-links li a {
+  color: var(--cream);
+  text-decoration: none;
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.9rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 18px 16px;
+  display: block;
+  transition: all 0.3s;
+  border-bottom: 3px solid transparent;
+}
+.nav-links li a:hover {
+  color: var(--gold-bright);
+  border-bottom-color: var(--gold-bright);
+}
+.nav-links li.order-btn a {
+  background: var(--gold-bright);
+  color: var(--dark);
+  font-weight: 700;
+  border-radius: 4px;
+  padding: 10px 22px;
+  margin-left: 10px;
+  border-bottom: none;
+}
+.nav-links li.order-btn a:hover { background: #fff; }
+.hamburger {
+  display: none;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 5px;
+  padding: 10px;
+}
+.hamburger span {
+  display: block;
+  width: 28px;
+  height: 3px;
+  background: var(--gold-bright);
+  border-radius: 2px;
+}
+
+/* HERO */
+.page-hero {
+  background: var(--dark);
+  text-align: center;
+  padding: 60px 20px;
+}
+.page-hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.8rem;
+  color: var(--cream);
+  margin-bottom: 10px;
+}
+.page-hero h1 span { color: var(--gold-bright); }
+.page-hero p {
+  color: #aaa;
+  font-size: 1.1rem;
+  max-width: 550px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+.flag-line {
+  height: 4px;
+  background: linear-gradient(to right, var(--green-ja) 33%, var(--yellow-ja) 33%, var(--yellow-ja) 66%, var(--green-ja) 66%);
+  max-width: 200px;
+  margin: 16px auto 0;
+  border-radius: 2px;
+}
+
+/* WOOD BG */
+.wood-bg {
+  background:
+    repeating-linear-gradient(90deg, rgba(139,105,20,0.06) 0px, transparent 2px, transparent 40px),
+    linear-gradient(180deg, #D2B48C 0%, #C4A265 20%, #D2B48C 40%, #C9AD6E 60%, #D2B48C 80%, #C4A265 100%);
+  background-color: #D2B48C;
+}
+
+/* FOOD STORY CARDS */
+.stories-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 50px 24px 60px;
+}
+.story-card {
+  margin-bottom: 50px;
+  background: rgba(255,248,231,0.6);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  border: 1px solid rgba(218,165,32,0.2);
+}
+.story-card-header {
+  background: var(--dark);
+  padding: 24px 28px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.story-card-header .emoji { font-size: 2rem; }
+.story-card-header h2 {
+  font-family: 'Playfair Display', serif;
+  color: var(--gold-bright);
+  font-size: 1.6rem;
+}
+.story-card-body {
+  padding: 28px;
+}
+.story-card-body p {
+  font-size: 1.08rem;
+  line-height: 1.85;
+  color: #3d2b1a;
+  margin-bottom: 16px;
+}
+.story-card-body p:last-child { margin-bottom: 0; }
+.story-card-body .fun-fact {
+  background: rgba(218,165,32,0.1);
+  border-left: 4px solid var(--gold);
+  padding: 14px 18px;
+  border-radius: 0 8px 8px 0;
+  margin: 16px 0;
+  font-style: italic;
+  color: var(--wood-dark);
+}
+
+/* BACK LINK */
+.back-link {
+  text-align: center;
+  padding: 0 24px 60px;
+}
+.back-link a {
+  display: inline-block;
+  background: var(--gold-bright);
+  color: var(--dark);
+  font-family: 'Oswald', sans-serif;
+  font-size: 1rem;
+  padding: 14px 36px;
+  border-radius: 4px;
+  text-decoration: none;
+  letter-spacing: 2px;
+  font-weight: 600;
+  text-transform: uppercase;
+  transition: 0.3s;
+}
+.back-link a:hover { background: #fff; }
+
+/* FOOTER */
+footer {
+  background: var(--dark);
+  text-align: center;
+  padding: 30px 20px;
+}
+.footer-flag {
+  height: 4px;
+  background: linear-gradient(to right, var(--green-ja) 33%, var(--yellow-ja) 33%, var(--yellow-ja) 66%, var(--green-ja) 66%);
+  margin-bottom: 20px;
+}
+.footer-copy {
+  color: #888;
+  font-size: 0.85rem;
+}
+.footer-copy span { color: var(--gold); }
+
+@media (max-width: 768px) {
+  .hamburger { display: flex; }
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #2a1a0a;
+    border-top: 2px solid var(--gold);
+  }
+  .nav-links.open { display: flex; }
+  .nav-links li a { padding: 14px 24px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .nav-links li.order-btn { padding: 10px 24px; }
+  .nav-links li.order-btn a { margin-left: 0; text-align: center; }
+  .nav-inner { position: relative; }
+  .page-hero h1 { font-size: 2rem; }
+  .story-card-header h2 { font-size: 1.3rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav-bar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Irie Cuisine</a>
+    <div class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#menu">Menu</a></li>
+      <li><a href="index.html#catering">Catering</a></li>
+      <li><a href="index.html#find">Find Us</a></li>
+      <li class="order-btn"><a href="tel:3863927021">Order Now</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="page-hero">
+  <h1>Food <span>Stories</span></h1>
+  <p>Every dish on our menu has a story. Explore the vibrant Caribbean roots behind the flavors you love at Irie Cuisine.</p>
+  <div class="flag-line"></div>
+</div>
+
+<div class="wood-bg">
+<div class="stories-container">
+
+<!-- JERK CHICKEN -->
+<div class="story-card">
+  <div class="story-card-header">
+    <div class="emoji">🍗</div>
+    <h2>Jerk Chicken</h2>
+  </div>
+  <div class="story-card-body">
+    <p>Jerk chicken is the crown jewel of Jamaican cooking and one of the most recognized Caribbean dishes in the world. The word "jerk" refers to both the spice blend and the cooking technique — meat is rubbed down with a fiery mix of spices and then slow-cooked over pimento wood, which gives it that unmistakable smoky, aromatic flavor.</p>
+    <p>The technique has deep roots in Jamaica's mountainous interior, where the indigenous Taíno people developed methods of smoking and preserving meat over open fires. Over the centuries, this evolved into the jerk style we know today, blending Taíno smoking methods with African seasoning traditions and Caribbean ingredients.</p>
+    <p>The signature jerk marinade features scotch bonnet peppers (for serious heat), allspice berries (also called pimento — native to Jamaica), thyme, garlic, ginger, and scallions. Every cook has their own secret ratio, and that's part of the magic. At Irie Cuisine, our jerk chicken is marinated for hours and slow-smoked over real charcoal for that deep, authentic flavor.</p>
+    <div class="fun-fact">🌶️ Fun Fact: Allspice is called "pimento" in Jamaica and it grows natively on the island. It's the only major spice that is indigenous to the Western Hemisphere!</div>
+  </div>
+</div>
+
+<!-- OXTAILS -->
+<div class="story-card">
+  <div class="story-card-header">
+    <div class="emoji">🍖</div>
+    <h2>Oxtails</h2>
+  </div>
+  <div class="story-card-body">
+    <p>Jamaican oxtail is a beloved comfort food that has become a Caribbean icon. Oxtail is the tail of cattle, cut into thick rounds with a central bone surrounded by rich, marbled meat and lots of connective tissue. When cooked low and slow, all that collagen melts into the braising liquid, creating a thick, glossy, incredibly flavorful gravy that is pure comfort in a bowl.</p>
+    <p>Caribbean cooks transformed this once-humble cut into something extraordinary through patience, bold seasoning, and technique. The oxtail is typically marinated with thyme, scallions, garlic, allspice, and browning sauce (caramelized sugar), then seared to lock in color and flavor before being braised for hours with butter beans, scotch bonnet pepper, and vegetables.</p>
+    <p>Today, oxtail has gone from a budget-friendly cut to one of the most sought-after meats in Caribbean cuisine. It's featured in restaurants worldwide, and the price has climbed to reflect just how much people love it. At Irie Cuisine, our oxtails are braised until the meat falls right off the bone, served in that rich, savory gravy with butter beans — exactly the way it should be.</p>
+    <div class="fun-fact">🦴 Fun Fact: Oxtail is one of the most collagen-rich cuts of beef, which means it's great for joints and skin. Plus, it creates that signature velvety, sticky gravy that no other cut can match!</div>
+  </div>
+</div>
+
+<!-- ESCOVITCH FISH -->
+<div class="story-card">
+  <div class="story-card-header">
+    <div class="emoji">🐟</div>
+    <h2>Escovitch Fish</h2>
+  </div>
+  <div class="story-card-body">
+    <p>Escovitch fish is one of Jamaica's most vibrant and flavorful dishes, and its story is a journey across continents. The name comes from the Spanish word "escabeche," a technique of preserving cooked fish in vinegar and spices. When the Spanish settled in Jamaica in the 1500s, they brought this pickling tradition with them. The word itself traces even further back — to the Arabic "sikbaj," meaning a vinegar-based stew, and before that to the Persian words for "vinegar" and "broth."</p>
+    <p>Jamaican cooks took the Spanish technique and made it completely their own. Instead of a mild European preparation, they added scotch bonnet peppers for heat, pimento berries for warmth, and a colorful mix of onions, carrots, and bell peppers. The fish — traditionally whole red snapper — is fried until golden and crispy, then topped with the spicy, tangy pickled vegetable mixture.</p>
+    <p>Originally, the vinegar served a practical purpose: in the days before refrigeration, fishermen would fry their catch and douse it in the pepper-vinegar sauce to keep it fresh. Today, escovitch is enjoyed year-round, but it's especially popular during Easter, when many Jamaicans enjoy fish on Good Friday. At Irie Cuisine, our escovitch is a crispy, tangy, spicy celebration on a plate.</p>
+    <div class="fun-fact">🌍 Fun Fact: The escovitch technique has traveled from Persia to Spain to North Africa to Jamaica — each culture adding its own twist. The Jamaican version is widely considered the boldest and most flavorful of them all!</div>
+  </div>
+</div>
+
+<!-- CURRIED GOAT -->
+<div class="story-card">
+  <div class="story-card-header">
+    <div class="emoji">🍛</div>
+    <h2>Curried Goat</h2>
+  </div>
+  <div class="story-card-body">
+    <p>Curried goat is a dish that sits at the heart of Jamaican celebrations — you'll find it at weddings, parties, holidays, and Sunday dinners across the island. It's a dish that brings people together, and the aroma alone can draw a crowd from down the street.</p>
+    <p>The curry tradition in Jamaica came from Indian workers who arrived on the island in the 1800s, bringing with them their spice blends and cooking methods. Jamaicans embraced curry powder and fused it with their own bold seasonings — adding scotch bonnet pepper, allspice, thyme, and garlic to create a curry flavor that is uniquely Caribbean. The goat meat, which thrives naturally in Jamaica's tropical climate, became the perfect match.</p>
+    <p>The key to great curried goat is time. The meat is marinated overnight, then slowly braised until fork-tender. The curry sauce becomes rich and thick, infused with the bone marrow and all those beautiful spices. At Irie Cuisine, we serve ours with white rice and steamed vegetables so you can soak up every drop of that incredible sauce.</p>
+    <div class="fun-fact">🎉 Fun Fact: In Jamaica, curried goat is considered the ultimate party dish. It's almost mandatory at any proper Jamaican celebration — if there's no curried goat, some guests might wonder if it's really a party!</div>
+  </div>
+</div>
+
+<!-- STEW CHICKEN -->
+<div class="story-card">
+  <div class="story-card-header">
+    <div class="emoji">🍲</div>
+    <h2>Stew Chicken</h2>
+  </div>
+  <div class="story-card-body">
+    <p>Jamaican stew chicken is the ultimate Caribbean comfort food — a dish that feels like a warm hug from a Jamaican grandmother. It's hearty, savory, and deeply satisfying, with layers of flavor that come from patience and good seasoning.</p>
+    <p>The chicken is typically bone-in and skin-on, marinated in a blend of thyme, allspice, garlic, and browning sauce. It's then caramelized in a hot pot to get that deep brown color before being simmered low and slow with onions, bell peppers, carrots, and tomatoes. The result is a rich, thick sauce that clings to every piece of tender chicken.</p>
+    <p>What makes Jamaican stew chicken different from other stewed chicken dishes is the browning process — that step of caramelizing sugar in the pot before adding the chicken creates a depth of color and flavor that's completely unique to Caribbean cooking. At Irie Cuisine, our stew chicken is braised until the meat is falling off the bone, just the way it's meant to be.</p>
+    <div class="fun-fact">🥘 Fun Fact: The "browning" technique used in Jamaican stew chicken — caramelizing sugar until it's deep brown before adding the meat — is a time-honored Caribbean method that gives the dish its signature mahogany color and slightly sweet, complex flavor.</div>
+  </div>
+</div>
+
+<!-- FRIED PLANTAINS -->
+<div class="story-card">
+  <div class="story-card-header">
+    <div class="emoji">🍌</div>
+    <h2>Fried Plantains</h2>
+  </div>
+  <div class="story-card-body">
+    <p>Plantains are a staple across the Caribbean, West Africa, and Central America — and for good reason. These starchy cousins of the banana are incredibly versatile and absolutely delicious when prepared right.</p>
+    <p>In Jamaica, fried plantains are a beloved side dish that appears alongside almost everything. The trick is using ripe plantains — the skin should be mostly black, which means the starches have converted to sugar. When sliced and fried in oil, they caramelize on the outside while staying soft and sweet on the inside. That contrast of crispy and sweet is what makes them irresistible.</p>
+    <p>Plantains were brought to the Caribbean from West Africa and Southeast Asia, and they quickly became a cornerstone of island cooking. They can be prepared at every stage of ripeness — green plantains are starchy and savory (great for tostones), while ripe ones are sweet and perfect for frying. At Irie Cuisine, we serve golden, perfectly caramelized fried plantains as one of our most popular sides.</p>
+    <div class="fun-fact">🍌 Fun Fact: Plantains are one of the most widely eaten foods in the tropical world. They're a dietary staple for over 100 million people across Africa, the Caribbean, and Latin America!</div>
+  </div>
+</div>
+
+<!-- RICE & PEAS -->
+<div class="story-card">
+  <div class="story-card-header">
+    <div class="emoji">🍚</div>
+    <h2>Rice & Peas</h2>
+  </div>
+  <div class="story-card-body">
+    <p>Rice and peas is Jamaica's signature side dish — served at Sunday dinner, holidays, parties, and pretty much any meal where you want the full island experience. Despite the name, the "peas" are actually red kidney beans (in Jamaica, beans are called "peas").</p>
+    <p>The rice is cooked in coconut milk along with the kidney beans, garlic, thyme, scallions, and scotch bonnet pepper. The coconut milk gives the rice a creamy richness and subtle sweetness that pairs perfectly with bold, spicy main dishes like jerk chicken and oxtails.</p>
+    <p>This dish has roots in both African and Asian cooking traditions that came together in Jamaica. The combination of rice and beans is found across cultures worldwide — it's one of those beautiful examples of how different food traditions can blend into something new and wonderful. At Irie Cuisine, our rice and peas is made fresh daily with real coconut milk, the way it's supposed to be.</p>
+    <div class="fun-fact">🥥 Fun Fact: In Jamaica, Sunday dinner isn't complete without rice and peas. It's so closely tied to the day that some people call it "Sunday rice" — even though it tastes amazing any day of the week!</div>
+  </div>
+</div>
+
+<!-- FESTIVAL -->
+<div class="story-card">
+  <div class="story-card-header">
+    <div class="emoji">🧈</div>
+    <h2>Festival</h2>
+  </div>
+  <div class="story-card-body">
+    <p>Festival is a sweet, fried Jamaican dumpling that's the perfect companion to savory dishes like jerk chicken and escovitch fish. It's crispy on the outside, soft and slightly sweet on the inside, and absolutely addictive.</p>
+    <p>Made from a simple dough of cornmeal, flour, sugar, and a pinch of salt, festival dumplings are shaped into elongated fingers and deep-fried until golden brown. The cornmeal gives them a slightly gritty texture and earthy flavor, while the sugar adds just enough sweetness to balance out spicy main courses.</p>
+    <p>Festival is believed to have originated at Jamaican street food stalls and beach parties — hence the name! It's the kind of food that makes any meal feel like a celebration. At Irie Cuisine, our festivals are fried fresh and served warm alongside your favorite plate.</p>
+    <div class="fun-fact">🎶 Fun Fact: Festival gets its name from the festive occasions where it was originally served — beach parties, cookouts, and celebrations. It literally turns every meal into a festival!</div>
+  </div>
+</div>
+
+<!-- BEEF PATTIES -->
+<div class="story-card">
+  <div class="story-card-header">
+    <div class="emoji">🥟</div>
+    <h2>Beef Patties</h2>
+  </div>
+  <div class="story-card-body">
+    <p>The Jamaican beef patty is one of the most iconic Caribbean snacks — a flaky, golden pastry filled with spiced, seasoned ground beef. It's the ultimate grab-and-go food, and one bite tells you everything you need to know about Jamaican flavor.</p>
+    <p>The Jamaican patty draws inspiration from British Cornish pasties, which were brought to the island during the colonial period. Jamaican bakers transformed the concept entirely — adding turmeric to the crust for that signature golden-yellow color, and filling it with ground beef seasoned with scotch bonnet pepper, thyme, allspice, and scallions for a flavor that's unmistakably Caribbean.</p>
+    <p>Today, Jamaican patties are enjoyed worldwide and come in all kinds of fillings — beef, chicken, vegetable, shrimp, and more. But the classic beef patty remains the gold standard. At Irie Cuisine, our beef patties feature flaky golden crust stuffed with perfectly seasoned ground beef and island spices.</p>
+    <div class="fun-fact">💛 Fun Fact: The bright yellow color of a Jamaican patty crust comes from turmeric in the dough. It's not just for looks — turmeric also adds a subtle earthy flavor that makes the crust special!</div>
+  </div>
+</div>
+
+</div><!-- end stories-container -->
+
+<div class="back-link">
+  <a href="index.html">← Back to Main Page</a>
+</div>
+
+</div><!-- end wood-bg -->
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-flag"></div>
+  <p class="footer-copy">© 2026 <span>Irie Cuisine By Mackeba LLC</span> — Jamaican Eats & Community</p>
+</footer>
+
+</body>
+</html>
